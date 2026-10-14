@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Museo de la Nostalgia</title>
+<meta name="description" content="Museo virtual de la literatura juvenil que marcó a la generación de Wattpad, 2009–2015.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500;1,9..144,700&family=Karla:wght@400;500;700&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pared.css">
+</head>
+<body>
+
+<div class="linterna" aria-hidden="true"></div>
+
+<header class="barra-pared">
+  <p class="kicker">Sala principal</p>
+  <a class="ir-recorrido" href="recorrido.html">Entrar al recorrido <span aria-hidden="true">→</span></a>
+</header>
+
+<!-- Los cuadros se cuelgan desde js/pared.js con los datos de js/coleccion.js -->
+<main class="pared" id="pared" aria-label="Pared de la colección"></main>
+
+<footer class="zocalo">
+  <p>Haz clic en un cuadro para verlo de cerca</p>
+  <p id="conteo"></p>
+</footer>
+
+<script src="js/coleccion.js"></script>
+<script src="js/portadas.js"></script>
+<script src="js/pared.js"></script>
+</body>
+</html>
