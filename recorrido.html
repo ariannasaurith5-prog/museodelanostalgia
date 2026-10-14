@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recorrido · Museo de la Nostalgia</title>
+<meta name="description" content="Recorrido por las salas del Museo de la Nostalgia: literatura juvenil de 2009 a 2015.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,700&family=Karla:wght@400;500;700&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/recorrido.css">
+</head>
+<body>
+
+<canvas id="polvo" aria-hidden="true"></canvas>
+
+<header class="barra">
+  <a class="marca" href="index.html" title="Volver a la sala principal">Museo de la <em>Nostalgia</em></a>
+  <nav class="salas" id="salas" aria-label="Alas del museo"></nav>
+</header>
+
+<!-- Las salas se arman desde js/coleccion.js -->
+<main class="sala" id="sala" tabindex="0" aria-label="Recorrido del museo"></main>
+
+<footer class="pie">
+  <a class="volver" href="index.html">← Sala principal</a>
+  <span id="ubicacion">Entrada</span>
+  <div class="plano" id="plano" role="group" aria-label="Plano del museo"></div>
+</footer>
+
+<div class="vitrina" id="vitrina" role="dialog" aria-modal="true" aria-labelledby="vitrina-titulo" data-abierta="false">
+  <button class="cerrar" id="cerrar" type="button" aria-label="Cerrar pieza">✕</button>
+  <div class="vitrina-caja">
+    <div class="vitrina-marco" id="vitrina-marco"></div>
+    <div class="vitrina-texto">
+      <p class="num" id="vitrina-sala"></p>
+      <h2 id="vitrina-titulo"></h2>
+      <p class="credito" id="vitrina-credito"></p>
+      <div id="vitrina-cuerpo"></div>
+
+      <section class="bloque">
+        <h4>La adaptación</h4>
+        <p id="vitrina-film"></p>
+        <p class="film-meta" id="vitrina-film-meta"></p>
+      </section>
+
+      <section class="bloque" id="bloque-pistas">
+        <h4>Banda sonora</h4>
+        <ul class="pistas" id="vitrina-pistas"></ul>
+      </section>
+
+      <section class="bloque">
+        <h4>Ficha técnica</h4>
+        <dl class="ficha" id="vitrina-ficha"></dl>
+      </section>
+
+      <div class="acciones">
+        <button type="button" id="audioguia">▶ Audioguía</button>
+        <button type="button" id="siguiente">Siguiente pieza →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/coleccion.js"></script>
+<script src="js/portadas.js"></script>
+<script src="js/recorrido.js"></script>
+</body>
+</html>
