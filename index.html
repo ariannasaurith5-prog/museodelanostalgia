@@ -1,292 +1,35 @@
-/* ==========================================================================
-   SALA PRINCIPAL · la pared
-   Colgado tipo salón: cuadros de distintos tamaños y molduras alineados
-   por una línea central, cada uno con su alambre, su clavo y su luz.
-   Una linterna sigue al cursor por la pared.
-   ========================================================================== */
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Museo de la Nostalgia</title>
+<meta name="description" content="Museo virtual de la literatura juvenil que marcó a la generación de Wattpad, 2009–2015.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,700&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&family=Archivo:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pared.css">
+</head>
+<body>
 
-/* Pared de museo: pintura blanco hueso, luz cálida de techo */
-:root {
-  --pared: #ece6da;
-  --pared-clara: #f5f1e8;
-  --pared-sombra: #d8d0c1;
-  --pared-tinta: #3a332b;
-  --pared-tenue: #7d7366;
-  --sombra-cuadro: rgba(70,52,30,.28);
-  color-scheme: light;
-}
+<div class="linterna" aria-hidden="true"></div>
 
-body {
-  min-height: 100vh;
-  overflow-x: clip;
-  display: flex;
-  flex-direction: column;
-  color: var(--pared-tinta);
-  background:
-    radial-gradient(ellipse 85% 55% at 50% 10%, var(--pared-clara), transparent 70%),
-    linear-gradient(180deg, var(--pared-clara) 0%, var(--pared) 45%, #e4ddcf 100%);
-  background-color: var(--pared);
-}
-/* textura de muro pintado */
-body::before {
-  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image: var(--grano); opacity: .05; mix-blend-mode: multiply;
-}
+<header class="barra-pared">
+  <p class="kicker">Sala principal</p>
+  <a class="ir-recorrido" href="recorrido.html">Entrar al recorrido <span aria-hidden="true">→</span></a>
+</header>
 
-/* linterna: luz cálida que sigue al cursor, la pared se apaga apenas en los bordes */
-.linterna {
-  position: fixed; inset: 0; z-index: 5; pointer-events: none;
-  background: radial-gradient(circle clamp(18rem, 34vw, 32rem) at var(--x, 50%) var(--y, 40%),
-    rgba(255,236,200,.22), rgba(255,236,200,0) 45%, rgba(90,70,45,.12) 100%);
-}
+<!-- Los cuadros se cuelgan desde js/pared.js con los datos de js/coleccion.js -->
+<main class="pared" id="pared" aria-label="Pared de la colección"></main>
 
-/* ---------- cabecera ---------- */
-.barra-pared {
-  position: relative; z-index: 6;
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem 1.5rem;
-  padding-block: 1rem;
-  padding-inline: clamp(16px, 4vw, 3rem);
-}
-.barra-pared .kicker { color: var(--pared-tenue); }
-.ir-recorrido {
-  font-family: var(--util); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--pared-tinta); text-decoration: none;
-  border: 1px solid rgba(58,51,43,.35); border-radius: 2px; padding: .5rem .85rem;
-  transition: background .25s, color .25s;
-}
-.ir-recorrido:hover { background: var(--pared-tinta); color: var(--pared-clara); }
+<footer class="zocalo">
+  <p>Haz clic en un cuadro para verlo de cerca</p>
+  <p id="conteo"></p>
+</footer>
 
-/* ---------- la pared ---------- */
-.pared {
-  position: relative; z-index: 1; flex: 1;
-  overflow-x: clip;
-  display: flex; flex-direction: column; align-items: center;
-  gap: clamp(3.5rem, 6vw, 5.5rem);
-  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 5vw, 4.5rem);
-  padding-inline: clamp(16px, 4vw, 3rem);
-}
-.fila {
-  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-  gap: clamp(3rem, 4vw, 4rem) clamp(1.4rem, 3vw, 3rem);
-  max-width: 86rem;
-}
-
-/* ---------- el cuadro ---------- */
-.cuadro {
-  --ancho: 10rem;
-  position: relative;
-  display: flex; flex-direction: column; align-items: center; gap: .75rem;
-  width: var(--ancho);
-  color: inherit; text-decoration: none;
-  transform: rotate(var(--giro, 0deg));
-  transform-origin: 50% -1.4rem;               /* gira desde el clavo */
-  transition: transform .6s cubic-bezier(.2,.7,.3,1);
-  animation: colgar 1.2s cubic-bezier(.3,1.3,.5,1) backwards;
-  animation-delay: calc(var(--i, 0) * 70ms);
-}
-.cuadro[data-tam="s"]  { --ancho: clamp(6.5rem, 10vw, 9rem); }
-.cuadro[data-tam="m"]  { --ancho: clamp(8rem, 13.5vw, 12rem); }
-.cuadro[data-tam="l"]  { --ancho: clamp(10rem, 18vw, 16rem); }
-.cuadro[data-tam="xl"] { --ancho: clamp(16rem, 30vw, 26rem); }
-
-@keyframes colgar {
-  0%   { transform: translateY(-.9rem) rotate(calc(var(--giro, 0deg) * -3 + 2deg)); }
-  55%  { transform: translateY(0) rotate(calc(var(--giro, 0deg) * 1.8)); }
-  100% { transform: rotate(var(--giro, 0deg)); }
-}
-
-a.cuadro:hover, a.cuadro:focus-visible { transform: rotate(0deg) translateY(-3px); }
-
-/* luz de cuadro sobre la pared */
-.cuadro::before {
-  content: ""; position: absolute; top: -3.5rem; left: 50%; z-index: -1;
-  width: 160%; height: 75%; transform: translateX(-50%); pointer-events: none;
-  background: radial-gradient(ellipse 48% 62% at 50% 0%, rgba(255,226,170,.55), transparent 72%);
-  transition: opacity .4s; opacity: .8;
-}
-a.cuadro:hover::before, a.cuadro:focus-visible::before { opacity: 1; }
-
-/* alambre y clavo */
-.colgador {
-  position: absolute; top: -1.45rem; left: 50%; transform: translateX(-50%);
-  width: 52%; height: 1.45rem; pointer-events: none;
-}
-.colgador svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.colgador polyline { fill: none; stroke: rgba(80,66,48,.45); stroke-width: 1; }
-.colgador i {
-  position: absolute; top: -.18rem; left: 50%; transform: translateX(-50%);
-  width: .38rem; height: .38rem; border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #f3dfae, #8a6a2e 70%);
-  box-shadow: 0 1px 2px rgba(0,0,0,.6);
-}
-
-/* moldura */
-.marco {
-  --grosor: .5rem;
-  --moldura: #222;
-  --paspartu: 0;
-  position: relative; display: block; width: 100%;
-  padding: var(--grosor);
-  background: var(--moldura);
-  box-shadow:
-    0 1.2rem 2.2rem var(--sombra-cuadro),
-    0 .25rem .5rem rgba(70,52,30,.22),
-    inset 0 1px 0 rgba(255,255,255,.22),
-    inset 0 -2px 0 rgba(0,0,0,.35),
-    inset 0 0 0 1px rgba(0,0,0,.25);
-}
-/* vidrio: un reflejo diagonal sobre la foto */
-.marco::after {
-  content: ""; position: absolute; inset: var(--grosor); z-index: 3; pointer-events: none;
-  background: linear-gradient(118deg, rgba(255,255,255,.11) 0%, rgba(255,255,255,0) 32%, rgba(255,255,255,0) 72%, rgba(255,255,255,.05) 100%);
-}
-.cuadro[data-marco="dorado"] .marco {
-  --grosor: clamp(.55rem, 1.1vw, .95rem);
-  --moldura: linear-gradient(135deg, #7a5a22 0%, #e2c27a 20%, #9b7430 42%, #f0d595 60%, #86642a 80%, #c9a35a 100%);
-}
-.cuadro[data-marco="negro"] .marco {
-  --grosor: .32rem;
-  --moldura: linear-gradient(135deg, #34343a, #0b0b0d);
-  --paspartu: 13%;
-}
-.cuadro[data-marco="blanco"] .marco {
-  --grosor: .38rem;
-  --moldura: linear-gradient(135deg, #f4f0e7, #cbc4b3);
-  --paspartu: 11%;
-}
-.cuadro[data-marco="madera"] .marco {
-  --grosor: .62rem;
-  --moldura: linear-gradient(135deg, #4a2e1c, #7a4f31 38%, #3b2414 68%, #5e3b24);
-}
-
-/* paspartú: el cartón claro entre moldura y foto */
-.paspartu {
-  display: block;
-  padding: var(--paspartu);
-  background: #ece6da;
-  box-shadow: inset 0 .2rem .5rem rgba(0,0,0,.18);
-}
-.cuadro[data-marco="dorado"] .paspartu { padding: 3px; background: #2a1f10; }
-.cuadro[data-marco="madera"] .paspartu { padding: 2px; background: #1c120b; }
-
-.cuadro .lienzo { aspect-ratio: 2 / 3; width: 100%; }
-
-/* título visible solo mientras no haya foto de portada */
-.lienzo-titulo {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
-  padding: .7rem .6rem .65rem;
-  font-family: var(--display); font-weight: 500; font-style: italic;
-  font-size: clamp(.72rem, 1.1vw, .95rem); line-height: 1.15;
-  color: var(--cartela); text-align: center; text-wrap: balance;
-  background: linear-gradient(0deg, rgba(0,0,0,.5), transparent);
-}
-.con-foto .lienzo-titulo { display: none; }
-
-/* cartelita bajo cada cuadro */
-.cuadro .cartela {
-  max-width: 100%;
-  display: flex; flex-direction: column; align-items: center;
-  background: #fbf9f4; color: var(--tinta-suave);
-  padding: .32rem .6rem .36rem; border-radius: 1px;
-  box-shadow: 0 .2rem .5rem rgba(70,52,30,.18), 0 0 0 1px rgba(70,52,30,.06);
-  font-family: var(--util); font-size: .6rem; line-height: 1.35; letter-spacing: .03em;
-  text-align: center;
-}
-.cuadro .cartela b {
-  font-family: var(--display); font-weight: 700; font-size: .74rem; letter-spacing: 0;
-  color: var(--tinta); text-wrap: balance;
-}
-
-/* ---------- cuadros especiales ---------- */
-.placa .paspartu {
-  padding: 0;
-  background: radial-gradient(ellipse at 50% 0%, #2e2542, #120e1b 78%);
-}
-.placa-contenido {
-  display: flex; flex-direction: column; align-items: center; gap: .7rem;
-  padding: clamp(1.5rem, 3.2vw, 2.6rem) clamp(1rem, 2.5vw, 2rem);
-  text-align: center;
-}
-.placa h1 {
-  margin: 0; font-family: var(--display); font-weight: 300;
-  font-size: clamp(1.9rem, 3.7vw, 3.2rem); line-height: 1;
-  color: var(--cartela); text-wrap: balance;
-}
-.placa h1 em { display: block; font-style: italic; font-weight: 700; color: var(--luz); }
-.placa .lema { margin: 0; font-style: italic; font-size: clamp(.92rem, 1.3vw, 1.06rem); color: var(--texto); }
-.placa .meta { margin: 0; font-family: var(--util); font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--tenue); font-variant-numeric: tabular-nums; }
-
-.texto-enmarcado {
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem;
-  padding: clamp(1rem, 2vw, 1.5rem) .8rem;
-  color: var(--tinta); text-align: center;
-}
-.anios {
-  font-family: var(--display); font-weight: 300; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1;
-  display: flex; flex-direction: column; align-items: center; gap: .15rem;
-  font-variant-numeric: lining-nums;
-}
-.anios i { font-style: normal; font-size: .6em; color: var(--acento); }
-.pie-texto {
-  font-family: var(--util); font-size: .56rem; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--tinta-suave);
-}
-.texto-enmarcado q {
-  font-family: var(--cuerpo); font-style: italic; font-size: clamp(.84rem, 1.15vw, .98rem); line-height: 1.45;
-  quotes: "«" "»"; text-wrap: balance;
-}
-
-/* placa de bronce para entrar */
-.entrada-bronce { position: relative; z-index: 1; display: flex; justify-content: center; }
-.placa-bronce {
-  position: relative;
-  display: inline-flex; align-items: center; gap: .8rem;
-  padding: .95rem 1.7rem;
-  border-radius: 3px;
-  background: linear-gradient(135deg, #8a6a2e, #e6c983 28%, #a07a35 52%, #f2dc9f 74%, #8e6c2f);
-  color: #2b1f0c; text-decoration: none;
-  font-family: var(--util); font-weight: 700; font-size: .74rem; letter-spacing: .2em; text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(255,255,255,.35);
-  box-shadow: 0 .7rem 1.4rem var(--sombra-cuadro), inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.3);
-  transition: filter .3s, transform .3s;
-}
-.placa-bronce::before, .placa-bronce::after {
-  content: ""; position: absolute; top: 50%; width: .32rem; height: .32rem; border-radius: 50%;
-  transform: translateY(-50%);
-  background: radial-gradient(circle at 35% 35%, #fff2c9, #6f5220 75%);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
-}
-.placa-bronce::before { left: .55rem; }
-.placa-bronce::after { right: .55rem; }
-.placa-bronce:hover, .placa-bronce:focus-visible { filter: brightness(1.12); transform: translateY(-2px); }
-.placa-bronce span { font-size: 1rem; letter-spacing: 0; }
-
-/* ---------- zócalo ---------- */
-.zocalo {
-  position: relative; z-index: 6;
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem;
-  padding-block: 1.3rem calc(1.3rem + env(safe-area-inset-bottom, 0px));
-  padding-inline: clamp(16px, 4vw, 3rem);
-  background: linear-gradient(180deg, var(--pared-sombra), #cbc2b1);
-  border-top: 1px solid rgba(70,52,30,.18);
-  box-shadow: 0 -6px 0 #e9e2d4, 0 -7px 0 rgba(70,52,30,.14);
-  font-family: var(--util); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pared-tinta);
-}
-.zocalo p { margin: 0; }
-
-/* sin cursor (celulares, tabletas): luz fija y suave */
-@media (hover: none) {
-  .linterna { background: radial-gradient(ellipse 90% 70% at 50% 35%, rgba(90,70,45,0) 55%, rgba(90,70,45,.1) 100%); }
-}
-
-/* ---------- celular ---------- */
-@media (max-width: 640px) {
-  .pared {
-    flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: flex-start;
-    gap: 3.2rem 1.25rem;
-  }
-  .fila { display: contents; }
-  .cuadro[data-tam] { --ancho: calc(50% - .625rem); }
-  .cuadro.placa { --ancho: 100%; order: -2; }
-  .entrada-bronce { width: 100%; order: -1; }
-}
+<script src="js/coleccion.js"></script>
+<script src="js/portadas.js"></script>
+<script src="js/pared.js"></script>
+</body>
+</html>
