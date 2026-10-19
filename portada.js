@@ -1,6 +1,6 @@
 /* ==========================================================================
    PORTADAS
-   Busca la foto de cada portada en img/portadas/<slug>.jpg (o en la ruta
+   Busca la foto de cada portada en <slug>.jpg (en la raíz del repositorio) (o en la ruta
    que indique el campo `portada` de la pieza). Si la foto existe, la pone
    dentro del cuadro. Si no existe, el cuadro conserva su obra abstracta.
    ========================================================================== */
@@ -15,7 +15,7 @@ window.Portadas = (function () {
     for (var i = 0; i < piezas.length; i++) {
       if (piezas[i].slug === slug && piezas[i].portada) return piezas[i].portada;
     }
-    return "img/portadas/" + slug + ".jpg";
+    return slug + ".jpg";
   }
 
   /* Devuelve una promesa con la ruta de la foto, o null si no existe. */
