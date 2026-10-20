@@ -66,7 +66,9 @@
     var mu = M.muro2014;
     var posts = mu.posts.map(function (x) {
       return '<figure class="post">' +
-        '<div class="foto" style="--f1:' + esc(x.colores[0]) + ";--f2:" + esc(x.colores[1]) + '"><span>' + esc(x.frase) + "</span></div>" +
+        (x.imagen
+          ? '<div class="foto" style="padding:0;filter:none;background:#ddd"><img src="' + esc(x.imagen) + '" alt="" loading="lazy" style="position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block"></div>'
+          : '<div class="foto" style="--f1:' + esc(x.colores[0]) + ";--f2:" + esc(x.colores[1]) + '"><span>' + esc(x.frase) + "</span></div>") +
         '<figcaption class="notas"><i aria-hidden="true">↻</i> <b>' + esc(x.notas) + "</b> notas</figcaption>" +
         '<p class="tags">' + esc(x.tags) + "</p>" +
         "</figure>";
@@ -74,7 +76,7 @@
     return '<section class="panel muro2014" data-parada data-tipo="rotulo">' +
       '<p class="kicker">Sala de documentos · reconstrucción</p>' +
       '<div class="rejilla">' + posts + "</div>" +
-      '<p class="cita">' + esc(mu.nota) + "</p>" +
+      (mu.nota ? '<p class="cita">' + esc(mu.nota) + "</p>" : "") +
       "</section>";
   }
 
@@ -85,7 +87,7 @@
       "<h2>" + esc(t.titulo) + "</h2>" +
       "<p>" + esc(t.texto) + "</p>" +
       '<p class="cita">«' + esc(t.cita) + "»</p>" +
-      '<p class="pendiente">' + esc(t.pendiente) + "</p>" +
+      (t.pendiente ? '<p class="pendiente">' + esc(t.pendiente) + "</p>" : "") +
       "</section>";
   }
 
