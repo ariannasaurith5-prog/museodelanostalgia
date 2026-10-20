@@ -274,21 +274,21 @@ window.MUSEO = {
   muro2014: {
     numero: "V", nombre: "El muro de 2014", corto: "Muro 2014",
     lema: "Donde la generación guardaba lo que sentía: texto blanco sobre una foto desenfocada.",
-    nota: "Reconstrucción museográfica. Ninguna imagen de archivo original se exhibe aquí: lo que se conserva es el formato, no el contenido ajeno.",
+    /* Fotos del muro: súbelas a la raíz del repositorio con estos nombres.
+       Puedes agregar o quitar bloques; notas y tags son opcionales. */
     posts: [
-      { frase: "leer para no estar aquí", notas: "14.892", tags: "#books #soft grunge #2014", colores: ["#6b7f8c", "#2a333c"] },
-      { frase: "nadie me entiende como este libro a las 3 a.m.", notas: "8.431", tags: "#bookblr #mine #late night", colores: ["#a88b7d", "#3b2d2a"] },
-      { frase: "mi generación aprendió a sentir en tapa blanda", notas: "22.107", tags: "#quotes #ya lit #aesthetic", colores: ["#8d7fa3", "#2e2639"] },
-      { frase: "terminé la saga y ahora no sé qué hacer con mi vida", notas: "5.776", tags: "#book hangover #help", colores: ["#7f9480", "#263029"] },
-      { frase: "era más fácil cuando el mundo cabía en siete tomos", notas: "31.540", tags: "#nostalgia #childhood #hp", colores: ["#b08a95", "#3a2a30"] },
-      { frase: "escribí mi primera historia aquí y nadie la leyó nunca", notas: "2.019", tags: "#wattpad #writing #old post", colores: ["#6f8396", "#232c35"] }
+      { imagen: "tumblr-1.jpg", notas: "14.892", tags: "#books #soft grunge #2014" },
+      { imagen: "tumblr-2.jpg", notas: "8.431", tags: "#bookblr #late night" },
+      { imagen: "tumblr-3.jpg", notas: "22.107", tags: "#quotes #ya lit #aesthetic" },
+      { imagen: "tumblr-4.jpg", notas: "5.776", tags: "#book hangover" },
+      { imagen: "tumblr-5.jpg", notas: "31.540", tags: "#nostalgia #hp" },
+      { imagen: "tumblr-6.jpg", notas: "2.019", tags: "#wattpad #writing" }
     ]
   },
 
   testimonios: {
     titulo: "El museo lo terminan los visitantes",
     texto: "Última sala del recorrido: los recuerdos de quienes leyeron estos libros cuando salieron. La nostalgia no está en las piezas, está en lo que la gente cuenta de ellas.",
-    cita: "Lo leí en el bus del colegio, en el puesto de atrás, y me pasé la parada tres veces esa semana.",
-    pendiente: "Formulario de testimonios · pendiente de conectar"
+    cita: "Lo leí en el bus del colegio, en el puesto de atrás, y me pasé la parada tres veces esa semana."
   }
 };
