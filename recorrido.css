@@ -355,3 +355,9 @@ body {
   width: 4.5rem; height: 4.5rem; flex: 0 0 auto; border-radius: 50%; object-fit: cover;
   border: 3px solid #fbf9f4; box-shadow: 0 .4rem 1rem rgba(70,52,30,.25);
 }
+
+/* fechas de la saga y reproductor de Spotify */
+.vitrina-texto .saga { font-family: var(--util); font-size: .78rem; letter-spacing: .04em; color: var(--luz); margin: -.6rem 0 1.1rem; }
+.saga-linea { margin: .3rem 0 0; font-size: .74rem; color: var(--luz); }
+.spotify { margin: .2rem 0 1rem; border-radius: 12px; overflow: hidden; }
+.spotify iframe { display: block; border: 0; }

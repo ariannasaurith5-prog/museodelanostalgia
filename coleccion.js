@@ -44,6 +44,8 @@ window.MUSEO = {
         procedencia: "Donación de quien leyó los tres libros en una semana de vacaciones",
         estado: "Regular. Esquinas dobladas como señaladores"
       },
+      saga: { inicio: "2008", fin: "2010", libros: "Trilogía", nota: "Precuelas en 2020 y 2025" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1962",
         texto: "Escribió guiones de televisión infantil antes de dedicarse a la novela. Dijo que la idea de los Juegos le llegó cambiando de canal entre un reality show y imágenes de la guerra de Irak.",
@@ -75,6 +77,8 @@ window.MUSEO = {
         procedencia: "Donación de quien hizo el test para saber a qué facción pertenecía",
         estado: "Bueno. Tercer tomo sin terminar"
       },
+      saga: { inicio: "2011", fin: "2013", libros: "Trilogía", nota: "Libro de relatos Cuatro en 2014" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1988",
         texto: "Escribió Divergente mientras estudiaba escritura creativa en la universidad y la publicó con 22 años, convirtiéndose en una de las autoras más jóvenes del fenómeno.",
@@ -105,6 +109,8 @@ window.MUSEO = {
         procedencia: "Donación de quien lo leyó para llegar antes que la película",
         estado: "Aceptable. Portada con el reparto del cine"
       },
+      saga: { inicio: "2009", fin: "2011", libros: "Trilogía", nota: "Precuelas en 2012 y 2016" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1972",
         texto: "Trabajó como contador antes de escribir. Correr o morir lo sacó de la literatura infantil y lo convirtió en autor de una de las grandes sagas distópicas del período.",
@@ -131,6 +137,8 @@ window.MUSEO = {
         procedencia: "Donación de quien defendía a Maxon en los foros",
         estado: "Excelente. Nunca se prestó a nadie"
       },
+      saga: { inicio: "2012", fin: "2016", libros: "5 libros", nota: "" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1981",
         texto: "Pensó la historia como una mezcla de la reina Ester y los realities de citas. Después de la saga principal siguió escribiendo dentro del mismo universo.",
@@ -157,6 +165,8 @@ window.MUSEO = {
         procedencia: "Donación de quien todavía no admite en voz alta que lo releyó",
         estado: "Deteriorado por uso. Páginas marcadas con esquina doblada"
       },
+      saga: { inicio: "2005", fin: "2008", libros: "4 libros", nota: "Sol de medianoche en 2020" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1973",
         texto: "Sin experiencia previa como escritora, contó que la historia nació de un sueño. Terminó el manuscrito en pocos meses y quince agencias lo rechazaron antes de que se publicara.",
@@ -188,6 +198,8 @@ window.MUSEO = {
         procedencia: "Donación de quien llegó por el fanfic y se quedó por el canon",
         estado: "Bueno. Árbol genealógico dibujado en la contraportada"
       },
+      saga: { inicio: "2007", fin: "2014", libros: "6 libros (Cazadores de Sombras)", nota: "" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Nació en Teherán (Irán) en 1973, de padres estadounidenses",
         texto: "Antes de publicar se hizo conocida escribiendo fanfiction en internet. Cazadores de Sombras creció hasta convertirse en un universo de varias sagas.",
@@ -217,6 +229,8 @@ window.MUSEO = {
         procedencia: "Donación de quien lo leía en clase de matemáticas",
         estado: "Regular. Forrado con papel de cuaderno"
       },
+      saga: { inicio: "2009", fin: "2012", libros: "4 libros", nota: "" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1979",
         texto: "Empezó la novela en un curso de escritura que le regaló su esposo por su cumpleaños. La saga terminó siendo bestseller de The New York Times.",
@@ -243,6 +257,8 @@ window.MUSEO = {
         procedencia: "Donación de quien lloró en el bus",
         estado: "Bueno. Frases transcritas en una libreta aparte"
       },
+      saga: { inicio: "2012", fin: "2012", libros: "Novela única", nota: "" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1977",
         texto: "Además de novelista es creador de contenido: con su hermano Hank hace el canal Vlogbrothers. Trabajó como capellán en un hospital infantil, experiencia que marcó esta novela.",
@@ -274,6 +290,8 @@ window.MUSEO = {
         procedencia: "Donación de quien se sintió infinito en un túnel",
         estado: "Bueno. Una carta propia guardada entre las páginas"
       },
+      saga: { inicio: "1999", fin: "1999", libros: "Novela única", nota: "" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1970",
         texto: "Es escritor y director de cine. Caso raro en el museo: él mismo escribió el guion y dirigió la adaptación de su novela.",
@@ -304,6 +322,8 @@ window.MUSEO = {
         procedencia: "Donación de quien todavía sabe en qué cabaña lo habrían puesto",
         estado: "Bueno. Mapa del Campamento Mestizo copiado a mano"
       },
+      saga: { inicio: "2005", fin: "2009", libros: "5 libros", nota: "El cáliz de los dioses en 2023" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Estados Unidos, 1964",
         texto: "Fue profesor de inglés e historia en secundaria. Inventó a Percy para su hijo, que tenía dislexia y déficit de atención y le pedía cuentos de mitología griega.",
@@ -333,6 +353,8 @@ window.MUSEO = {
         procedencia: "Donación de la generación entera",
         estado: "Variable. El cuarto tomo no sobrevivió"
       },
+      saga: { inicio: "1997", fin: "2007", libros: "7 libros", nota: "" },
+      spotify: "",   /* pega aquí el link de la playlist o álbum de Spotify */
       autorFicha: {
         origen: "Reino Unido, 1965",
         texto: "Escribió el primer libro siendo madre soltera, con apoyo de subsidios del Estado. También publica novela policiaca con el seudónimo Robert Galbraith.",

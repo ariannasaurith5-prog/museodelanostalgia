@@ -58,7 +58,8 @@
         '<span class="marco">' + lienzoHTML(p) + '<span class="entrar">Entrar en la pieza</span></span>' +
       "</button>" +
       '<div class="reflejo" aria-hidden="true">' + lienzoHTML(p) + "</div>" +
-      '<div class="cartela"><h3>' + esc(p.titulo) + '</h3><p class="autor"><b>' + esc(p.autor) + "</b> · " + esc(p.fecha) + "</p></div>" +
+      '<div class="cartela"><h3>' + esc(p.titulo) + '</h3><p class="autor"><b>' + esc(p.autor) + "</b> · " + esc(p.fecha) + "</p>" +
+        (p.saga ? '<p class="saga-linea">' + esc(textoSaga(p)) + "</p>" : "") + "</div>" +
       "</article>";
   }
 
@@ -248,6 +249,19 @@
       .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + ".jpg";
   }
 
+  /* "2008 – 2010 · Trilogía" */
+  function textoSaga(p) {
+    if (!p.saga) return "";
+    var g = p.saga, años = g.inicio === g.fin ? g.inicio : g.inicio + " – " + g.fin;
+    return años + " · " + g.libros + (g.nota ? " · " + g.nota : "");
+  }
+
+  /* Convierte un link normal de Spotify en el reproductor incrustado */
+  function embedSpotify(url) {
+    var m = /open\.spotify\.com\/(?:intl-[a-z]+\/)?(playlist|album|track)\/([A-Za-z0-9]+)/.exec(url || "");
+    return m ? "https://open.spotify.com/embed/" + m[1] + "/" + m[2] : "";
+  }
+
   function nombreAla(id) {
     for (var i = 0; i < M.alas.length; i++) {
       if (M.alas[i].id === id) return "Sala " + M.alas[i].numero + " · " + M.alas[i].nombre;
@@ -273,6 +287,8 @@
     v.sala.textContent = nombreAla(p.ala);
     v.titulo.textContent = p.titulo;
     v.credito.textContent = p.autor + " · " + p.fecha;
+    var vs = document.getElementById("vitrina-saga");
+    vs.textContent = p.saga ? "Publicación: " + textoSaga(p) : "";
 
     v.cuerpo.innerHTML = "";
     p.curaduria.forEach(function (texto) {
@@ -300,8 +316,13 @@
     v.film.textContent = p.adaptacion.texto;
     v.filmMeta.textContent = p.adaptacion.meta;
 
+    var spot = document.getElementById("vitrina-spotify");
+    var emb = embedSpotify(p.spotify);
+    spot.innerHTML = emb ? '<iframe src="' + emb + '" width="100%" height="352" frameborder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Banda sonora de ' + esc(p.titulo) + ' en Spotify"></iframe>' : "";
+    spot.hidden = !emb;
+
     v.pistas.innerHTML = "";
-    v.bloquePistas.hidden = p.pistas.length === 0;
+    v.bloquePistas.hidden = p.pistas.length === 0 && !emb;
     p.pistas.forEach(function (pista, n) {
       var li = document.createElement("li");
       li.innerHTML =

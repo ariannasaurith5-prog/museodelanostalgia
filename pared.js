@@ -67,7 +67,7 @@
           '<span class="lienzo-titulo">' + esc(p.titulo) + "</span>" +
         "</span>" +
       "</span></span>" +
-      '<span class="cartela"><b>' + esc(p.titulo) + "</b>" + esc(p.autor) + " · " + esc(p.anio) + "</span>" +
+      '<span class="cartela"><b>' + esc(p.titulo) + "</b>" + esc(p.autor) + " · " + esc(p.saga ? (p.saga.inicio === p.saga.fin ? p.saga.inicio : p.saga.inicio + "–" + p.saga.fin) : p.anio) + "</span>" +
       "</a>";
   }
 
