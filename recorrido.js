@@ -38,14 +38,14 @@
       '<p class="kicker">' + esc(e.kicker) + "</p>" +
       "<h1>" + esc(e.titulo) + " <span>" + esc(e.subtitulo) + "</span></h1>" +
       "<p>" + esc(e.texto) + "</p>" +
-      '<p class="meta">' + M.piezas.length + " piezas · " + (M.alas.length + 1) + " alas · Audioguía y banda sonora</p>" +
+      '<p class="meta">' + M.piezas.length + " piezas · " + (M.alas.length + 1) + " salas · Banda sonora</p>" +
       '<p class="avanza"><i></i> Avanza hacia la derecha</p>' +
       "</section>";
   }
 
-  function rotulo(numero, nombre, lema) {
-    return '<section class="panel rotulo" data-parada data-tipo="rotulo">' +
-      '<p class="num">Ala ' + esc(numero) + "</p>" +
+  function rotulo(numero, nombre, lema, id) {
+    return '<section class="panel rotulo"' + (id ? ' id="sala-' + esc(id) + '"' : '') + ' data-parada data-tipo="rotulo">' +
+      '<p class="num">Sala ' + esc(numero) + "</p>" +
       "<h2>" + esc(nombre) + "</h2>" +
       "<p>" + esc(lema) + "</p>" +
       "</section>";
@@ -60,6 +60,17 @@
       '<div class="reflejo" aria-hidden="true">' + lienzoHTML(p) + "</div>" +
       '<div class="cartela"><h3>' + esc(p.titulo) + '</h3><p class="autor"><b>' + esc(p.autor) + "</b> · " + esc(p.fecha) + "</p></div>" +
       "</article>";
+  }
+
+  /* Última parada: puerta hacia la sala aparte del muro de 2014 */
+  function puertaMuro() {
+    var mu = M.muro2014;
+    return '<section class="panel rotulo puerta-muro" data-parada data-tipo="rotulo">' +
+      '<p class="num">Sala ' + esc(mu.numero) + "</p>" +
+      "<h2>" + esc(mu.nombre) + "</h2>" +
+      "<p>" + esc(mu.lema) + "</p>" +
+      '<a class="ir-muro" href="muro.html">Pasar a la sala →</a>' +
+      "</section>";
   }
 
   function muro() {
@@ -95,13 +106,11 @@
   var accesos = [["Entrada", 0]];
   M.alas.forEach(function (ala) {
     accesos.push([ala.numero + " · " + ala.corto, partes.length]);
-    partes.push(rotulo(ala.numero, ala.nombre, ala.lema));
+    partes.push(rotulo(ala.numero, ala.nombre, ala.lema, ala.id));
     M.piezas.forEach(function (p) { if (p.ala === ala.id) partes.push(pieza(p)); });
   });
-  accesos.push([M.muro2014.numero + " · " + M.muro2014.corto, partes.length]);
-  partes.push(rotulo(M.muro2014.numero, M.muro2014.nombre, M.muro2014.lema));
-  partes.push(muro());
   partes.push(testimonios());
+  partes.push(puertaMuro());
   sala.innerHTML = partes.join("");
 
   var paradas = [].slice.call(sala.querySelectorAll("[data-parada]"));
@@ -133,6 +142,36 @@
     navSalas.appendChild(b);
     return b;
   });
+
+  /* Menú superior: índice de toda la colección */
+  var indice = document.getElementById("indice-lista");
+  if (indice) {
+    M.alas.forEach(function (ala) {
+      var g = document.createElement("li");
+      g.className = "indice-sala";
+      g.textContent = "Sala " + ala.numero + " · " + ala.nombre;
+      indice.appendChild(g);
+      piezasEls.forEach(function (el, i) {
+        var p = porSlug[el.dataset.slug];
+        if (p.ala !== ala.id) return;
+        var li = document.createElement("li");
+        var b = document.createElement("button");
+        b.type = "button";
+        b.textContent = p.titulo;
+        b.addEventListener("click", function () {
+          document.getElementById("indice").open = false;
+          ir(paradas.indexOf(el), true);
+          abrir(i);
+        });
+        li.appendChild(b);
+        indice.appendChild(li);
+      });
+    });
+    document.addEventListener("click", function (e) {
+      var d = document.getElementById("indice");
+      if (d.open && !d.contains(e.target)) d.open = false;
+    });
+  }
 
   var puntos = paradas.map(function (p, i) {
     var b = document.createElement("button");
@@ -193,14 +232,25 @@
     filmMeta: document.getElementById("vitrina-film-meta"),
     pistas: document.getElementById("vitrina-pistas"),
     bloquePistas: document.getElementById("bloque-pistas"),
-    ficha: document.getElementById("vitrina-ficha")
+    ficha: document.getElementById("vitrina-ficha"),
+    bloqueAutor: document.getElementById("bloque-autor"),
+    autorNombre: document.getElementById("autor-nombre"),
+    autorOrigen: document.getElementById("autor-origen"),
+    autorTexto: document.getElementById("autor-texto"),
+    autorObras: document.getElementById("autor-obras")
   };
-  var bAudio = document.getElementById("audioguia");
+  var bAudio = document.getElementById("audioguia") || document.createElement("button"); // audioguía retirada
   var abierta = -1, ultimoFoco = null;
+
+  /* Foto del autor: autor-<nombre-en-minusculas-con-guiones>.jpg en la raíz */
+  function fotoAutor(nombre) {
+    return "autor-" + nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + ".jpg";
+  }
 
   function nombreAla(id) {
     for (var i = 0; i < M.alas.length; i++) {
-      if (M.alas[i].id === id) return "Ala " + M.alas[i].numero + " · " + M.alas[i].nombre;
+      if (M.alas[i].id === id) return "Sala " + M.alas[i].numero + " · " + M.alas[i].nombre;
     }
     return "";
   }
@@ -231,6 +281,21 @@
       n.textContent = texto;
       v.cuerpo.appendChild(n);
     });
+
+    var af = p.autorFicha;
+    v.bloqueAutor.hidden = !af;
+    if (af) {
+      v.autorNombre.textContent = p.autor;
+      var foto = document.getElementById("autor-foto");
+      foto.hidden = true;
+      foto.onload = function () { foto.hidden = false; };
+      foto.onerror = function () { foto.hidden = true; };
+      foto.alt = "Foto de " + p.autor;
+      foto.src = af.foto || fotoAutor(p.autor);
+      v.autorOrigen.textContent = af.origen;
+      v.autorTexto.textContent = af.texto;
+      v.autorObras.textContent = af.obras ? "Otras obras: " + af.obras : "";
+    }
 
     v.film.textContent = p.adaptacion.texto;
     v.filmMeta.textContent = p.adaptacion.meta;
@@ -281,6 +346,9 @@
   });
   document.getElementById("cerrar").addEventListener("click", cerrar);
   vitrina.addEventListener("click", function (e) { if (e.target === vitrina) cerrar(); });
+  document.getElementById("anterior").addEventListener("click", function () {
+    abrir((abierta - 1 + piezasEls.length) % piezasEls.length);
+  });
   document.getElementById("siguiente").addEventListener("click", function () {
     abrir((abierta + 1) % piezasEls.length);
   });

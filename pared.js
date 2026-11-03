@@ -12,24 +12,25 @@
 
   var DISPOSICION = [
     [
+      { especial: "placa" }
+    ],
+    [
       { pieza: "crepusculo", tam: "s", marco: "negro" },
       { pieza: "harry-potter", tam: "m", marco: "dorado" },
-      { especial: "placa" },
-      { pieza: "los-juegos-del-hambre", tam: "m", marco: "dorado" },
-      { pieza: "divergente", tam: "s", marco: "negro" }
+      { pieza: "percy-jackson", tam: "m", marco: "madera" },
+      { pieza: "los-juegos-del-hambre", tam: "l", marco: "dorado" },
+      { pieza: "divergente", tam: "m", marco: "negro" },
+      { pieza: "la-seleccion", tam: "s", marco: "blanco" }
     ],
     [
       { pieza: "hush-hush", tam: "s", marco: "madera" },
       { pieza: "ciudad-de-hueso", tam: "m", marco: "blanco" },
       { pieza: "bajo-la-misma-estrella", tam: "l", marco: "dorado" },
-      { pieza: "correr-o-morir", tam: "m", marco: "negro" },
-      { pieza: "la-seleccion", tam: "s", marco: "madera" }
+      { pieza: "las-ventajas-de-ser-invisible", tam: "m", marco: "negro" },
+      { pieza: "correr-o-morir", tam: "s", marco: "madera" }
     ],
     [
-      { especial: "fecha" },
-      { pieza: "percy-jackson", tam: "m", marco: "dorado" },
-      { especial: "entrar" },
-      { especial: "cita" }
+      { especial: "entrar" }
     ]
   ];
 
@@ -77,7 +78,7 @@
           '<span class="kicker">Colección permanente</span>' +
           "<h1>Museo de la <em>Nostalgia</em></h1>" +
           '<p class="lema">' + esc(M.entrada.titulo + " " + M.entrada.subtitulo) + "</p>" +
-          '<p class="meta">' + M.piezas.length + " piezas · " + (M.alas.length + 1) + " alas · 2009–2015</p>" +
+          '<p class="meta">' + M.piezas.length + " piezas · " + (M.alas.length + 1) + " salas · 2009–2015</p>" +
         "</span></span></span></div>";
     }
     if (tipo === "fecha") {

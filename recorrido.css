@@ -291,3 +291,67 @@ body {
 .cerrar { background: rgba(251,249,244,.92); }
 .cerrar:hover, .acciones button:hover { color: #fbf9f4; }
 .post { box-shadow: 0 .6rem 1.3rem rgba(70,52,30,.22); }
+
+/* ==========================================================================
+   MENÚ SUPERIOR, FICHA DEL AUTOR Y MÁRGENES DE LA FICHA
+   ========================================================================== */
+.menu { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem 1rem; margin-left: auto; min-width: 0; }
+.menu .salas { margin-left: 0; }
+.menu-link {
+  font-family: var(--util); font-size: .67rem; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--cartela); text-decoration: none; padding: .33rem .6rem;
+  border: 1px solid rgba(148,102,31,.35); border-radius: 2px;
+}
+.menu-link:hover { background: var(--luz); color: #fbf9f4; }
+.indice { position: relative; }
+.indice summary {
+  list-style: none; cursor: pointer;
+  font-family: var(--util); font-size: .67rem; letter-spacing: .13em; text-transform: uppercase;
+  color: #fbf9f4; background: var(--luz); padding: .38rem .75rem; border-radius: 2px;
+}
+.indice summary::-webkit-details-marker { display: none; }
+.indice summary::after { content: " ▾"; }
+.indice[open] summary::after { content: " ▴"; }
+.indice-lista {
+  position: absolute; right: 0; top: calc(100% + .4rem); z-index: 30;
+  width: min(20rem, 86vw); max-height: 70vh; overflow-y: auto;
+  margin: 0; padding: .6rem 0; list-style: none;
+  background: #fbf9f4; border: 1px solid rgba(70,52,30,.15); border-radius: 3px;
+  box-shadow: 0 1rem 2.4rem rgba(70,52,30,.22);
+}
+.indice-sala {
+  padding: .7rem 1rem .3rem; font-family: var(--util); font-size: .6rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--luz);
+}
+.indice-lista button {
+  display: block; width: 100%; text-align: left; border: 0; background: none; cursor: pointer;
+  padding: .4rem 1rem .4rem 1.4rem; font-family: var(--display); font-size: .95rem; color: var(--cartela);
+}
+.indice-lista button:hover { background: rgba(148,102,31,.1); }
+
+.autor-nombre { font-family: var(--display); font-size: 1.1rem; color: var(--cartela); margin: 0 0 .1rem !important; }
+#bloque-autor p + p { margin-top: .45rem; }
+
+/* más aire en la vitrina y en la ficha técnica */
+.vitrina { padding-bottom: clamp(3rem, 8vh, 5rem); }
+.vitrina-texto { padding-right: clamp(0rem, 2vw, 1.5rem); }
+.bloque { margin-top: 1.8rem; padding-top: 1.2rem; }
+.ficha { gap: .55rem 1.4rem; padding: .9rem 1rem; background: rgba(251,249,244,.7); border: 1px solid rgba(70,52,30,.1); border-radius: 2px; }
+.cartela { padding: 1rem 1.15rem; }
+@media (max-width: 620px) { .menu { margin-left: 0; width: 100%; } }
+
+/* puerta hacia la sala del muro de 2014 */
+.ir-muro {
+  align-self: flex-start; margin-top: .6rem;
+  font-family: var(--util); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: #fbf9f4; background: var(--luz); text-decoration: none;
+  padding: .7rem 1.1rem; border-radius: 2px; transition: filter .25s;
+}
+.ir-muro:hover { filter: brightness(1.12); }
+
+/* foto del autor */
+.autor-cabeza { display: flex; align-items: center; gap: 1rem; margin-bottom: .7rem; }
+.autor-foto {
+  width: 4.5rem; height: 4.5rem; flex: 0 0 auto; border-radius: 50%; object-fit: cover;
+  border: 3px solid #fbf9f4; box-shadow: 0 .4rem 1rem rgba(70,52,30,.25);
+}

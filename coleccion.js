@@ -33,16 +33,21 @@ window.MUSEO = {
     {
       slug: "los-juegos-del-hambre", ala: "distopias",
       titulo: "Los Juegos del Hambre", autor: "Suzanne Collins",
-      anio: "2008", fecha: "2008 (ed. española 2009)",
+      anio: "2008", fecha: "2008",
       motivo: "brasas", colores: ["#8e2f17", "#2b0f0c"],
       curaduria: [
-        "La pieza que abrió el ala y, con ella, la década. Convirtió la distopía en conversación de pasillo y le enseñó a una generación entera que un libro podía doler y acelerarse al mismo tiempo.",
+        "La pieza que abrió la sala y, con ella, la década. Convirtió la distopía en conversación de pasillo y le enseñó a una generación entera que un libro podía doler y acelerarse al mismo tiempo.",
         "Lo que se exhibe aquí no es solo la novela: es el momento en que leer dejó de ser tarea y se volvió urgencia. La gente terminaba el primer tomo y salía a buscar el segundo el mismo día."
       ],
       ficha: {
         tecnica: "Tapa blanda, lomo partido a la mitad",
         procedencia: "Donación de quien leyó los tres libros en una semana de vacaciones",
         estado: "Regular. Esquinas dobladas como señaladores"
+      },
+      autorFicha: {
+        origen: "Estados Unidos, 1962",
+        texto: "Escribió guiones de televisión infantil antes de dedicarse a la novela. Dijo que la idea de los Juegos le llegó cambiando de canal entre un reality show y imágenes de la guerra de Irak.",
+        obras: "Las crónicas de las Tierras Bajas · Balada de pájaros cantores y serpientes"
       },
       adaptacion: {
         estado: "si", sello: "Adaptada 2012",
@@ -70,6 +75,11 @@ window.MUSEO = {
         procedencia: "Donación de quien hizo el test para saber a qué facción pertenecía",
         estado: "Bueno. Tercer tomo sin terminar"
       },
+      autorFicha: {
+        origen: "Estados Unidos, 1988",
+        texto: "Escribió Divergente mientras estudiaba escritura creativa en la universidad y la publicó con 22 años, convirtiéndose en una de las autoras más jóvenes del fenómeno.",
+        obras: "Insurgente · Leal · Las marcas de la muerte"
+      },
       adaptacion: {
         estado: "si", sello: "Adaptada 2014",
         texto: "Caso de estudio de cómo se agotó la fórmula. La taquilla fue cayendo película tras película y la cuarta entrega nunca llegó a rodarse: la saga quedó inconclusa en pantalla, con los lectores esperando un final que solo existe en papel.",
@@ -95,6 +105,11 @@ window.MUSEO = {
         procedencia: "Donación de quien lo leyó para llegar antes que la película",
         estado: "Aceptable. Portada con el reparto del cine"
       },
+      autorFicha: {
+        origen: "Estados Unidos, 1972",
+        texto: "Trabajó como contador antes de escribir. Correr o morir lo sacó de la literatura infantil y lo convirtió en autor de una de las grandes sagas distópicas del período.",
+        obras: "Prueba de fuego · La cura mortal · Virus letal"
+      },
       adaptacion: {
         estado: "si", sello: "Adaptada 2014",
         texto: "Completó su trilogía en pantalla, algo que Divergente no logró. Se apoyó en música orquestal y no en canciones pop, lo que la dejó fuera de la economía de las bandas sonoras que definió a sus competidoras.",
@@ -116,6 +131,11 @@ window.MUSEO = {
         procedencia: "Donación de quien defendía a Maxon en los foros",
         estado: "Excelente. Nunca se prestó a nadie"
       },
+      autorFicha: {
+        origen: "Estados Unidos, 1981",
+        texto: "Pensó la historia como una mezcla de la reina Ester y los realities de citas. Después de la saga principal siguió escribiendo dentro del mismo universo.",
+        obras: "La élite · La elegida · La heredera · La corona · La sirena"
+      },
       adaptacion: {
         estado: "no", sello: "Nunca adaptada",
         texto: "Pieza de la sala de las adaptaciones que nunca ocurrieron. The CW grabó dos pilotos y no recogió ninguno. Años después Netflix anunció una película y terminó cancelando el proyecto. La saga sigue existiendo solo en papel.",
@@ -126,7 +146,7 @@ window.MUSEO = {
     {
       slug: "crepusculo", ala: "sobrenatural",
       titulo: "Crepúsculo", autor: "Stephenie Meyer",
-      anio: "2005", fecha: "2005 · fiebre 2008–2012",
+      anio: "2005", fecha: "2005",
       motivo: "luna", colores: ["#3a3550", "#0e0c18"],
       curaduria: [
         "La pieza más visitada del museo y la que menos gente admite haber visitado. Fundó el vocabulario sentimental de la década y la costumbre de dividirse en bandos por un personaje.",
@@ -136,6 +156,11 @@ window.MUSEO = {
         tecnica: "Tapa dura, relectura compulsiva",
         procedencia: "Donación de quien todavía no admite en voz alta que lo releyó",
         estado: "Deteriorado por uso. Páginas marcadas con esquina doblada"
+      },
+      autorFicha: {
+        origen: "Estados Unidos, 1973",
+        texto: "Sin experiencia previa como escritora, contó que la historia nació de un sueño. Terminó el manuscrito en pocos meses y quince agencias lo rechazaron antes de que se publicara.",
+        obras: "Luna nueva · Eclipse · Amanecer · La huésped"
       },
       adaptacion: {
         estado: "si", sello: "Adaptada 2008",
@@ -163,6 +188,11 @@ window.MUSEO = {
         procedencia: "Donación de quien llegó por el fanfic y se quedó por el canon",
         estado: "Bueno. Árbol genealógico dibujado en la contraportada"
       },
+      autorFicha: {
+        origen: "Nació en Teherán (Irán) en 1973, de padres estadounidenses",
+        texto: "Antes de publicar se hizo conocida escribiendo fanfiction en internet. Cazadores de Sombras creció hasta convertirse en un universo de varias sagas.",
+        obras: "Los orígenes · Los príncipes oscuros · Las últimas horas"
+      },
       adaptacion: {
         estado: "si", sello: "Adaptada 2013",
         texto: "Fracasó en taquilla y la secuela ya anunciada se canceló. Tres años después la historia volvió como serie de televisión con otro reparto: una de las piezas del museo que fue adaptada dos veces, y que funcionó mejor la segunda.",
@@ -187,6 +217,11 @@ window.MUSEO = {
         procedencia: "Donación de quien lo leía en clase de matemáticas",
         estado: "Regular. Forrado con papel de cuaderno"
       },
+      autorFicha: {
+        origen: "Estados Unidos, 1979",
+        texto: "Empezó la novela en un curso de escritura que le regaló su esposo por su cumpleaños. La saga terminó siendo bestseller de The New York Times.",
+        obras: "Crescendo · Silencio · Finale · Hielo negro"
+      },
       adaptacion: {
         estado: "no", sello: "Nunca adaptada",
         texto: "Segunda pieza de la sala de las adaptaciones que nunca ocurrieron. Los derechos se vendieron, hubo anuncios, hubo fechas de rodaje y hubo fans eligiendo reparto en internet. La película nunca se filmó.",
@@ -208,6 +243,11 @@ window.MUSEO = {
         procedencia: "Donación de quien lloró en el bus",
         estado: "Bueno. Frases transcritas en una libreta aparte"
       },
+      autorFicha: {
+        origen: "Estados Unidos, 1977",
+        texto: "Además de novelista es creador de contenido: con su hermano Hank hace el canal Vlogbrothers. Trabajó como capellán en un hospital infantil, experiencia que marcó esta novela.",
+        obras: "Buscando a Alaska · Ciudades de papel · Mil veces hasta siempre"
+      },
       adaptacion: {
         estado: "si", sello: "Adaptada 2014",
         texto: "Costó una fracción de lo que costaban las sagas de fantasía y recaudó más de veinte veces su presupuesto. Su banda sonora funcionó como la última gran playlist compartida de la generación: se escuchaba completa, en orden, llorando.",
@@ -221,9 +261,39 @@ window.MUSEO = {
       ]
     },
     {
+      slug: "las-ventajas-de-ser-invisible", ala: "dolor",
+      titulo: "Las ventajas de ser invisible", autor: "Stephen Chbosky",
+      anio: "1999", fecha: "1999",
+      motivo: "trazos", colores: ["#5a4a3a", "#1a140f"],
+      curaduria: [
+        "Una novela contada en cartas a un desconocido. Llegó años antes que el resto de la colección, pero la generación de 2012 la adoptó como propia cuando salió la película.",
+        "Es la pieza de los que se sentían por fuera: la que hizo que ser raro, callado y lector dejara de ser algo que había que esconder. Sus frases terminaron escritas en cuadernos y publicadas en todos los muros de Tumblr."
+      ],
+      ficha: {
+        tecnica: "Edición de bolsillo con frases subrayadas en tres colores",
+        procedencia: "Donación de quien se sintió infinito en un túnel",
+        estado: "Bueno. Una carta propia guardada entre las páginas"
+      },
+      autorFicha: {
+        origen: "Estados Unidos, 1970",
+        texto: "Es escritor y director de cine. Caso raro en el museo: él mismo escribió el guion y dirigió la adaptación de su novela.",
+        obras: "El amigo imaginario · guionista de Rent y La Bella y la Bestia (2017)"
+      },
+      adaptacion: {
+        estado: "si", sello: "Adaptada 2012",
+        texto: "Dirigida por el propio autor, es de las adaptaciones más fieles del período. Llegó en 2012, en pleno auge del cine juvenil, y convirtió la escena del túnel en una de las imágenes más compartidas de la década.",
+        meta: "2012 · dir. Stephen Chbosky"
+      },
+      pistas: [
+        { titulo: "Heroes", artista: "David Bowie" },
+        { titulo: "Asleep", artista: "The Smiths" },
+        { titulo: "Come On Eileen", artista: "Dexys Midnight Runners" }
+      ]
+    },
+    {
       slug: "percy-jackson", ala: "fundacional",
       titulo: "Percy Jackson y el ladrón del rayo", autor: "Rick Riordan",
-      anio: "2005", fecha: "2005 (ed. española 2006)",
+      anio: "2005", fecha: "2005",
       motivo: "anillos", colores: ["#1d4f6e", "#0a1a26"],
       curaduria: [
         "La otra puerta de entrada. Mientras una mitad de la generación esperaba la carta de Hogwarts, la otra descubría que los dioses griegos seguían vivos y tenían hijos con déficit de atención y dislexia.",
@@ -233,6 +303,11 @@ window.MUSEO = {
         tecnica: "Saga de cinco tomos, más las que vinieron después",
         procedencia: "Donación de quien todavía sabe en qué cabaña lo habrían puesto",
         estado: "Bueno. Mapa del Campamento Mestizo copiado a mano"
+      },
+      autorFicha: {
+        origen: "Estados Unidos, 1964",
+        texto: "Fue profesor de inglés e historia en secundaria. Inventó a Percy para su hijo, que tenía dislexia y déficit de atención y le pedía cuentos de mitología griega.",
+        obras: "Los héroes del Olimpo · Las crónicas de Kane · Magnus Chase"
       },
       adaptacion: {
         estado: "si", sello: "Adaptada 2010",
@@ -257,6 +332,11 @@ window.MUSEO = {
         tecnica: "Siete tomos, tres ediciones distintas, un solo lector",
         procedencia: "Donación de la generación entera",
         estado: "Variable. El cuarto tomo no sobrevivió"
+      },
+      autorFicha: {
+        origen: "Reino Unido, 1965",
+        texto: "Escribió el primer libro siendo madre soltera, con apoyo de subsidios del Estado. También publica novela policiaca con el seudónimo Robert Galbraith.",
+        obras: "Animales fantásticos y dónde encontrarlos · Serie Cormoran Strike (como Robert Galbraith)"
       },
       adaptacion: {
         estado: "si", sello: "Adaptada 2001",

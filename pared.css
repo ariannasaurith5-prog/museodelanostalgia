@@ -290,3 +290,12 @@ a.cuadro:hover::before, a.cuadro:focus-visible::before { opacity: 1; }
   .cuadro.placa { --ancho: 100%; order: -2; }
   .entrada-bronce { width: 100%; order: -1; }
 }
+
+/* menú superior de la sala principal */
+.menu-pared { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem 1.1rem; }
+.menu-pared a:not(.ir-recorrido) {
+  font-family: var(--util); font-size: .66rem; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--pared-tenue); text-decoration: none; padding: .3rem 0; border-bottom: 1px solid transparent;
+}
+.menu-pared a:not(.ir-recorrido):hover { color: var(--pared-tinta); border-bottom-color: currentColor; }
+.cuadro[data-tam="xl"] { --ancho: clamp(16rem, 28vw, 24rem); }
